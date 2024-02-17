@@ -1,25 +1,21 @@
 package mywork.Mappers;
 
-import mywork.Descriptors.AttributeDescriptor;
-import mywork.Descriptors.DefaultDescriptor;
-import mywork.Descriptors.ReferenceDescriptor;
-import mywork.Domain.User;
-
 import java.lang.reflect.Type;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import mywork.Descriptors.AttributeDescriptor;
+import mywork.Descriptors.DefaultDescriptor;
+import mywork.Domain.User;
 
 public class DescriptorMapper {
   protected List<AttributeDescriptor> CreateAttributeDescriptors() {
     List<AttributeDescriptor> result = new ArrayList<>();
-
-    result.add(new DefaultDescriptor("remoteId", GetClass(), int.class));
-    result.add(new DefaultDescriptor("createdDate", GetClass(), ZonedDateTime.class));
-    result.add(new DefaultDescriptor("lastChangedDate", GetClass(), ZonedDateTime.class));
-    result.add(new ReferenceDescriptor("createdBy", GetClass(), User.class));
-    result.add(new ReferenceDescriptor("lastChangedBy", GetClass(), User.class));
-    result.add(new DefaultDescriptor("optimisticLockVersion", GetClass(), int.class));
+    result.add(DefaultDescriptor.forInteger("remoteId", GetClass()));
+    result.add(DefaultDescriptor.forDate("createdDate", GetClass()));
+    result.add(DefaultDescriptor.forDate("lastChangedDate", GetClass()));
+    result.add(DefaultDescriptor.forReference("createdBy", GetClass(), User.class));
+    result.add(DefaultDescriptor.forReference("lastChangedBy", GetClass(), User.class));
+    result.add(DefaultDescriptor.forInteger("optimisticLockVersion", GetClass()));
     return result;
   }
 
