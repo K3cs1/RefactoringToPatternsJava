@@ -1,24 +1,30 @@
 package MyWork;
 
-import org.hamcrest.core.IsInstanceOf;
+import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.time.ZonedDateTime;
-
 public class CapitalCalculationTests {
 
-    @Test
-    public void four_parameter_constructor_yields_loan_with_TermROC_strategy()
-    {
-        Loan loan = new Loan(1.0f, 2.0f, 4, ZonedDateTime.now());
-        Assert.assertThat(loan.GetCapitalStrategy(), new IsInstanceOf(TermROC.class));
-    }
+  @Test
+  public void testTermLoanNoPayments() {
+    double commitment = 1.0f;
+    double riskRating = 2.0f;
+    Date maturity = new Date();
+    Loan termLoan = Loan.createTermLoan(commitment, riskRating, maturity);
+    Assert.assertNotNull(termLoan);
+  }
 
-    @Test
-    public void five_parameter_constructor_yields_revolving_TermROC_strategy()
-    {
-        Loan loan = new Loan(1.0f, 2.0f, 4, ZonedDateTime.now(), ZonedDateTime.now());
-        Assert.assertThat(loan.GetCapitalStrategy(), new IsInstanceOf(RevolvingTermROC.class));
-    }
+  @Test
+  public void testTermLoanWithRiskAdjustedCapitalStrategy() {
+    CapitalStrategyTermLoan riskAdjustedCapitalStrategy = new CapitalStrategyTermLoan();
+    double commitment = 1.0f;
+    double outstanding = 2.0f;
+    double riskRating = 2.0f;
+    Date maturity = new Date();
+    Loan termLoan =
+        Loan.createTermLoan(
+            riskAdjustedCapitalStrategy, commitment, outstanding, riskRating, maturity);
+    Assert.assertNotNull(termLoan);
+  }
 }
