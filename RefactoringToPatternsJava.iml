@@ -9,6 +9,10 @@
       <sourceFolder url="file://$MODULE_DIR$/InlineSingleton/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/MoveCreationKnowledgeToFactory/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MoveCreationKnowledgeToFactory/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/ComposeMethod/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ComposeMethod/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/ReplaceConditionalLogicWithStrategy/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ReplaceConditionalLogicWithStrategy/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
